@@ -2,32 +2,32 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { info, photos, thumbs } from '@/utils'
-import Img from './Img'
+import Img from './components/Img'
 
 const photo = photos[3]
 
 const Home = () => (
-  <>
-    <h1 className="text-4xl text-center">Myydään - Rauma</h1>
-    <div className="flex justify-between bg-amber-100 rounded-sm p-2">
-      <div>
+  <main className="p-4">
+    <h1 className="text-4xl text-center pb-4">Myydään - Rauma</h1>
+    <div className="grid grid-cols-12 bg-amber-100 rounded-sm p-2">
+      <div className="col-span-5">
         <h2>Kerrostalo | 3h, k</h2>
         <h2 className="font-bold">Ruoripolku 1 A, Merirauma, Rauma</h2>
       </div>
-      <div>
+      <div className="col-span-3">
         <h2>Hinta</h2>
         <h2 className="font-bold">{info.price}</h2>
       </div>
-      <div>
+      <div className="col-span-2">
         <h2>Koko</h2>
         <h2 className="font-bold">{info.area}</h2>
       </div>
-      <div>
+      <div className="col-span-2">
         <h2>Vuosi</h2>
         <h2 className="font-bold">{info.year}</h2>
       </div>
     </div>
-    <div>
+    <div className="p-4">
       <Img {...photo} alt={photo.description} />
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -49,7 +49,7 @@ const Home = () => (
         ></iframe>
       </div>
     </div>
-    <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+    <div className="grid grid-cols-4 md:grid-cols-6 gap-2 p-4">
       {thumbs.map((p) => (
         <Link
           className="flex-1 basis-10 bg-amber-100 border-amber-200 hover:bg-amber-200 hover:border-amber-300 active:bg-amber-200 active:border-amber-300 border-1 rounded p-2"
@@ -60,7 +60,7 @@ const Home = () => (
         </Link>
       ))}
     </div>
-  </>
+  </main>
 )
 
 export default Home
