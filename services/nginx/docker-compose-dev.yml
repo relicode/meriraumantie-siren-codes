@@ -1,0 +1,15 @@
+---
+services:
+  cv:
+    extends:
+      file: ./docker-compose.yml
+      service: cv
+    container_name: cv-dev
+    environment:
+      SUBDOMAINS: dev,*
+      URL: sallamois.online
+    volumes:
+      - ./dev.conf:/config/nginx/site-confs/default.conf
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -I --resolve dev.sallamois.online:443:127.0.0.1 https://dev.sallamois.online']
+

@@ -1,0 +1,35 @@
+---
+services:
+  cv:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: cv-prod
+    cap_add:
+      - NET_ADMIN
+    environment:
+      CERTPROVIDER: letsencrypt
+      DNSPLUGIN: ovh
+      DOCKER_MODS: linuxserver/mods:universal-package-install
+      INSTALL_PIP_PACKAGES: certbot-dns-ovh
+      ONLY_SUBDOMAINS: false
+      PGID: 100
+      PUID: 1001
+      PROPAGATION: 30
+      STAGING: false
+      SUBDOMAINS: meriraumantie
+      TZ: Europe/Tallinn
+      URL: siren.codes
+      VALIDATION: dns
+    volumes:
+      - ./server.conf:/server.conf:ro
+      - ./prod.conf:/config/nginx/site-confs/default.conf
+      - ./ovh.ini:/config/dns-conf/ovh.ini
+      - ../../out:/app/www/public:ro
+    ports:
+      - 8080:443
+      - 8081:80
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -I --resolve meriraumantie.siren.codes:443:127.0.0.1 https://meriraumantie.siren.codes']
+      interval: 10s
+      timeout: 5s
+      retries: 50

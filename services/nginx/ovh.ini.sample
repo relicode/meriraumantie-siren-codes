@@ -1,0 +1,6 @@
+# /config/dns-conf/ovh.ini
+# https://www.ovh.com/auth/api/createToken
+dns_ovh_endpoint = ovh-eu
+dns_ovh_application_key = aaaaa
+dns_ovh_application_secret = bbbbb
+dns_ovh_consumer_key = ccccc
