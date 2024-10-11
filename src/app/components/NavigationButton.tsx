@@ -1,9 +1,10 @@
+import Image from 'next/image'
+import Link, { LinkProps } from 'next/link'
+
 import backArrowIcon from '@/assets/icons/back-arrow.png'
 import homeIcon from '@/assets/icons/home.png'
 import leftArrowIcon from '@/assets/icons/left-arrow.png'
 import rightArrowIcon from '@/assets/icons/right-arrow.png'
-import Image from 'next/image'
-import Link, { LinkProps } from 'next/link'
 
 const variants = {
   back: backArrowIcon,
@@ -24,7 +25,7 @@ const NavigationButton = ({
       (typeof className === 'string' ? ` ${className}` : '')
     }
   >
-    <Image width={32} height={32} src={variants[variant].src} alt={variant} />
+    <Image unoptimized width={32} height={32} src={variants[variant].src} alt={variant} />
   </Link>
 )
 

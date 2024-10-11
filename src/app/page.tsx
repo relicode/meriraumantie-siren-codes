@@ -1,10 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { info, photos, thumbs } from '@/utils'
-import Img from './components/Img'
-
-const photo = photos[3]
+import { info, thumbs } from '@/utils'
 
 const Home = () => (
   <main className="p-4">
@@ -27,8 +24,18 @@ const Home = () => (
         <h2 className="font-bold">{info.year}</h2>
       </div>
     </div>
-    <div className="p-4">
-      <Img {...photo} alt={photo.description} />
+    <div className="py-4">
+      <Image
+        priority
+        src="/photos/meriraumantie/meriraumantie-000004.webp"
+        alt={info.address}
+        placeholder="blur"
+        blurDataURL="/blurred-image.png"
+        className="w-full h-auto"
+        width={1200}
+        height={800}
+        sizes="(max-width: 768px) 600px, 1200px"
+      />
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
       <div>
@@ -56,7 +63,7 @@ const Home = () => (
           key={p.id}
           href={`/kuva/${p.id}`}
         >
-          <Image src={p.src} width={p.width} height={p.height} alt={p.description} className="mx-auto" />
+          <Image src={p} alt={p.description} unoptimized className="mx-auto" />
         </Link>
       ))}
     </div>

@@ -1,31 +1,3 @@
-import photoA from '@/assets/img/meriraumantie/meriraumantie-000001.webp'
-import photoB from '@/assets/img/meriraumantie/meriraumantie-000002.webp'
-import photoC from '@/assets/img/meriraumantie/meriraumantie-000003.webp'
-import photoD from '@/assets/img/meriraumantie/meriraumantie-000004.webp'
-import photoE from '@/assets/img/meriraumantie/meriraumantie-000005.webp'
-import photoF from '@/assets/img/meriraumantie/meriraumantie-000006.webp'
-import photoG from '@/assets/img/meriraumantie/meriraumantie-000007.webp'
-import photoH from '@/assets/img/meriraumantie/meriraumantie-000008.webp'
-import photoI from '@/assets/img/meriraumantie/meriraumantie-000009.webp'
-import photoJ from '@/assets/img/meriraumantie/meriraumantie-000010.webp'
-import photoK from '@/assets/img/meriraumantie/meriraumantie-000011.webp'
-import photoL from '@/assets/img/meriraumantie/meriraumantie-000012.webp'
-import photoM from '@/assets/img/meriraumantie/meriraumantie-000013.webp'
-import photoN from '@/assets/img/meriraumantie/meriraumantie-000014.webp'
-import photoO from '@/assets/img/meriraumantie/meriraumantie-000015.webp'
-import photoP from '@/assets/img/meriraumantie/meriraumantie-000016.webp'
-import photoQ from '@/assets/img/meriraumantie/meriraumantie-000017.webp'
-import photoR from '@/assets/img/meriraumantie/meriraumantie-000018.webp'
-import photoS from '@/assets/img/meriraumantie/meriraumantie-000019.webp'
-import photoT from '@/assets/img/meriraumantie/meriraumantie-000020.webp'
-import photoU from '@/assets/img/meriraumantie/meriraumantie-000021.webp'
-import photoV from '@/assets/img/meriraumantie/meriraumantie-000022.webp'
-import photoX from '@/assets/img/meriraumantie/meriraumantie-000023.webp'
-import photoY from '@/assets/img/meriraumantie/meriraumantie-000024.webp'
-import photoZ from '@/assets/img/meriraumantie/meriraumantie-000025.webp'
-import photoÄ from '@/assets/img/meriraumantie/meriraumantie-000026.webp'
-import photoÖ from '@/assets/img/meriraumantie/meriraumantie-000027.webp'
-
 import thumbA from '@/assets/img/thumbs/thumb-000001.webp'
 import thumbB from '@/assets/img/thumbs/thumb-000002.webp'
 import thumbC from '@/assets/img/thumbs/thumb-000003.webp'
@@ -62,35 +34,41 @@ const mapPhoto = (photo: StaticImageData, description: string, id: number) => ({
   ...photo,
 })
 
-const photoData: [photo: StaticImageData, description: string][] = [
-  [photoA, 'Julkisivu 1'],
-  [photoB, 'Julkisivu 2'],
-  [photoC, 'Julkisivu 3'],
-  [photoD, 'Piha 1'],
-  [photoE, 'Piha 2'],
-  [photoF, 'Piha 3'],
-  [photoG, 'Julkisivu 4'],
-  [photoH, 'Käytävä 1'],
-  [photoI, 'Rappukäytävä 1'],
-  [photoJ, 'Käytävä 2'],
-  [photoK, 'Huone 1'],
-  [photoL, 'Huone 2'],
-  [photoM, 'Huone 3'],
-  [photoN, 'Huone 4'],
-  [photoO, 'Keittiö 1'],
-  [photoP, 'Kylpyhuone 1'],
-  [photoQ, 'Huone 5'],
-  [photoR, 'Huone 6'],
-  [photoS, 'Parveke 1'],
-  [photoT, 'Parveke 2'],
-  [photoU, 'Keittiö 2'],
-  [photoV, 'Kylpyhuone 2'],
-  [photoX, 'Kellari 1'],
-  [photoY, 'Pesutupa 1'],
-  [photoZ, 'Sauna 1'],
-  [photoÄ, 'Sauna 2'],
-  [photoÖ, 'Sauna 3'],
-]
+const photoDescriptions = [
+  'Julkisivu 1',
+  'Julkisivu 2',
+  'Julkisivu 3',
+  'Piha 1',
+  'Piha 2',
+  'Piha 3',
+  'Julkisivu 4',
+  'Käytävä 1',
+  'Rappukäytävä 1',
+  'Käytävä 2',
+  'Huone 1',
+  'Huone 2',
+  'Huone 3',
+  'Huone 4',
+  'Keittiö 1',
+  'Kylpyhuone 1',
+  'Huone 5',
+  'Huone 6',
+  'Parveke 1',
+  'Parveke 2',
+  'Keittiö 2',
+  'Kylpyhuone 2',
+  'Kellari 1',
+  'Pesutupa 1',
+  'Sauna 1',
+  'Sauna 2',
+  'Sauna 3',
+] as const
+
+export const photos = photoDescriptions.map((description, idx) => ({
+  id: String(idx + 1),
+  src: `/photos/meriraumantie/meriraumantie-${String(idx + 1).padStart(6, '0')}.webp`,
+  description,
+}))
 
 const thumbData: [photo: StaticImageData, description: string][] = [
   [thumbA, 'Julkisivu 1'],
@@ -122,7 +100,6 @@ const thumbData: [photo: StaticImageData, description: string][] = [
   [thumbÖ, 'Sauna 3'],
 ]
 
-export const photos = photoData.map((p, idx) => mapPhoto(...p, idx))
 export const thumbs = thumbData.map((p, idx) => mapPhoto(...p, idx))
 export type Photo = (typeof photos)[number]
 

@@ -5,7 +5,9 @@ export default function Configure() {
    */
   const nextConfig = {
     output: 'export',
-    images: { unoptimized: true },
+    images: {
+      loaderFile: './src/loader.ts',
+    },
   }
   return nextConfig
 }
